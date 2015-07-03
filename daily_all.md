@@ -3,7 +3,7 @@
 - <a href="https://github.com/KimiyukiYamauchi/pbl.2015/blob/master/daily.md" target="_blank">山内 公之(講師)</a>
 - <a href="https://github.com/s13002/pbl.2015/blob/master/daily.md" target="_blank">亀浜 朝貴</a>
 - <a href="https://github.com/s13003/pbl.2015/blob/master/daily.md" target="_blank">儀間 大輝</a>
-- <a href="https://github.com/s13005/pbl.2015/blob/master/daily.md" target="_blank">工藤 潤平</a>
+- <a href="https://github.com/s13005/pbl2015/blob/master/daily.md" target="_blank">工藤 潤平</a>
 - <a href="https://github.com/s13006/pbl.2015/blob/master/daily.md" target="_blank">島袋 完誉</a>
 - <a href="https://github.com/s13008/pbl.2015/blob/master/daily.md" target="_blank">新垣 幸一朗</a>
 - <a href="https://github.com/s13009/pbl.2015/blob/master/daily.md" target="_blank">砂川 弘樹</a>
