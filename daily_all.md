@@ -1,6 +1,6 @@
 ### メンバのふりかえりへのリンク
 
-- <a href="https://github.com/KimiyukiYamauchi/pbl.2015/blob/master/daily.md" target="_blank">講師</a>
+- <a href="https://github.com/KimiyukiYamauchi/pbl.2015/blob/master/daily.md" target="_blank">山内 公之(講師)</a>
 - <a href="https://github.com/s13002/pbl.2015/blob/master/daily.md" target="_blank">亀浜 朝貴</a>
 - <a href="https://github.com/s13003/pbl.2015/blob/master/daily.md" target="_blank">儀間 大輝</a>
 - <a href="https://github.com/s13005/pbl.2015/blob/master/daily.md" target="_blank">工藤 潤平</a>
