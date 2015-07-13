@@ -49,9 +49,7 @@
 |NO.|メソッド名|処理名|変更箇所|
 |:-:|:---------|:-----|:-------|
 |1|main|メインメソッド|PersonList => ClientList|
-|2|statusSetting|システムの状態の設定|メインメニューに顧客管理を追加<br />
-顧客情報の追加ステータスを生成<br />
-顧客情報の更新ステータスを生成|
+|2|statusSetting|システムの状態の設定|メインメニューに顧客管理を追加|
 
 ### 6.2 クラス AddClientStatus
 |NO.|メソッド名|処理名|変更箇所|
@@ -59,8 +57,7 @@
 |1|setNextStatus|次に遷移する状態及びコマンドの文字列の設定| |
 |2|getNextStatus|次に遷移する状態の取得| |
 |3|displayFirstMess|最初に出力するメッセージの表示| |
-|4|displayPromptMess|次の状態に遷移することを促すためのメッセージ<br />
-の表示| |
+|4|displayPromptMess|次の状態に遷移することを促すためのメッセージの表示| |
 |5|displayFirstMess|操作者からのキー入力受付| |
 
 ### 6.3 クラス UpdateClientStatus
@@ -69,8 +66,7 @@
 |1|setNextStatus|次に遷移する状態及びコマンドの文字列の設定| |
 |2|getNextStatus|次に遷移する状態の取得| |
 |3|displayFirstMess|最初に出力するメッセージの表示| |
-|4|displayPromptMess|次の状態に遷移することを促すためのメッセージ<br />
-の表示| |
+|4|displayPromptMess|次の状態に遷移することを促すためのメッセージの表示| |
 |5|displayFirstMess|操作者からのキー入力受付| |
 
 ## 7. ファイル
