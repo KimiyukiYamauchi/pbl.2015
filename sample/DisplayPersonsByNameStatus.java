@@ -84,13 +84,15 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 					}
 					next_disp_id = rows;
 				}
-			}else if(code.equals("P")){
-				if(next_disp_id >= 3){
+			}/*else if(code.equals("P")){
+				System.out.println("現在のnext_disp_id: " + next_disp_id);
+				if((next_disp_id-6 >= 0){
 					System.out.println("前のページを表示");
-					int rows = 3;
-					for(int i=next_disp_id-3; i<next_disp_id; i++){
+					next_disp_id  -= 6;
+					for(int i=next_disp_id; i<next_disp_id+3; i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
+					next_disp_id += 3;
 				}else{
 					System.out.println("末尾の３件を表示");
 					int  rows =  selectedList.size() >= 3 ? 3 : selectedList.size();
@@ -99,7 +101,7 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 					}
 					next_disp_id = selectedList.size();
 				}
-			}
+			}*/
 		}
 	}
 
