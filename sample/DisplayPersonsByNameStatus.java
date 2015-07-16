@@ -11,6 +11,7 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 	private PersonList selectedList;
 	private DisplayPersonStatus next;
 	private int next_disp_id = 0;
+	private int  pre_start_id = 0;
 
 	/**
 	 * コンストラクタ DisplayPersonsByNameStatus
@@ -67,6 +68,7 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 				for(int i=0; i<rows; i++){
 					System.out.println( selectedList.getRecord(i).toString() );
 				}
+				pre_start_id = next_disp_id;
 				next_disp_id = rows;
 			}else if(code.equals("N")){
 				if(selectedList.size()>next_disp_id){
@@ -75,6 +77,7 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 					for(int i=next_disp_id; i<next_disp_id+rows; i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
+					pre_start_id = next_disp_id;
 					next_disp_id += rows;
 				}else{
 					System.out.println("最後まで表示して頭に戻りました");
@@ -82,26 +85,38 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 					for(int i=0; i<rows; i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
+					pre_start_id = 0;
 					next_disp_id = rows;
 				}
-			}/*else if(code.equals("P")){
-				System.out.println("現在のnext_disp_id: " + next_disp_id);
-				if((next_disp_id-6 >= 0){
+			}else if(code.equals("P")){
+				System.out.println("next_disp_id: " + next_disp_id);
+				System.out.println("pre_start_id: " + pre_start_id);
+				if(pre_start_id >= 3){
 					System.out.println("前のページを表示");
-					next_disp_id  -= 6;
+					if(next_disp_id >= 6){
+						if(next_disp_id%3 == 0) // 最終ページが3件の場合は6件前にが表示先頭
+							next_disp_id -= 6;
+						else // 最終ページが３件に満たない場合は３件＋最終ページの件数分前が表示先頭
+							next_disp_id -= (3+next_disp_id%3);
+					}else{ // 6件に満たない場合は先頭ページ
+						next_disp_id = 0;
+					}
 					for(int i=next_disp_id; i<next_disp_id+3; i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
+					pre_start_id = next_disp_id;
 					next_disp_id += 3;
 				}else{
 					System.out.println("末尾の３件を表示");
-					int  rows =  selectedList.size() >= 3 ? 3 : selectedList.size();
-					for(int i=selectedList.size()-rows; i<selectedList.size(); i++){
+					next_disp_id = 
+						selectedList.size() >= 3 ? selectedList.size()-3 : 0;
+					for(int i=next_disp_id; i<selectedList.size(); i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
+					pre_start_id = next_disp_id;
 					next_disp_id = selectedList.size();
 				}
-			}*/
+			}
 		}
 	}
 
@@ -116,9 +131,12 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 			displayList(s);
 			return this;
 		}else{
-		// 数値が入力された場合，その数値と同じIDをもつ
-		// レコードがselectedListにあるかどうか判定し，
-		// あればそれを次の状態DisplayPersonStatusに渡す
+			// 一覧表示に戻った時は先頭から表示
+			pre_start_id = 0;
+			next_disp_id = 0;
+			// 数値が入力された場合，その数値と同じIDをもつ
+			// レコードがselectedListにあるかどうか判定し，
+			// あればそれを次の状態DisplayPersonStatusに渡す
 			try {
 				int i = Integer.parseInt( s );
 				Person p = selectedList.get( i );
