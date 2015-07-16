@@ -93,11 +93,8 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 				System.out.println("pre_start_id: " + pre_start_id);
 				if(pre_start_id >= 3){
 					System.out.println("前のページを表示");
-					if(next_disp_id >= 6){
-						if(next_disp_id%3 == 0) // 最終ページが3件の場合は6件前にが表示先頭
-							next_disp_id -= 6;
-						else // 最終ページが３件に満たない場合は３件＋最終ページの件数分前が表示先頭
-							next_disp_id -= (3+next_disp_id%3);
+					if(next_disp_id >= 6){ // 6件以上ある場合は、現ページの先頭から3を引いたIDから表示
+						next_disp_id = pre_start_id - 3;
 					}else{ // 6件に満たない場合は先頭ページ
 						next_disp_id = 0;
 					}
