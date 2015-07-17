@@ -11,7 +11,8 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 	private PersonList selectedList;
 	private DisplayPersonStatus next;
 	private int next_start_id = 0; 	// 次のページの先頭ID
-	private int start_id = 0;				// 現ページの先頭ID
+	private int start_id;						// 現ページの先頭ID
+	private int listsize;						// selectedListのレコード数
 
 	/**
 	 * コンストラクタ DisplayPersonsByNameStatus
@@ -56,25 +57,28 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 	public void displayList(String code) {
 		// 入力された氏名に一致または氏名を含む従業員のレコードだけを
 		// selectedListに取り出す
-		selectedList = plist.searchByName( name );
+		if(next_start_id == 0){
+			selectedList = plist.searchByName( name );
+			listsize = selectedList.size();
+		}
 		// selectedListの件数＝0ならば当該職種をもつ
 		// 従業員はいないと表示
-		if( selectedList.size() <= 0 )
+		if( listsize <= 0 )
 			System.out.println( "従業員が存在しません。" );
 		else{
 			if(code.equals(" ") && next_start_id == 0){
 				System.out.println("最初のページを表示");
-				int rows = selectedList.size() >= 3 ? 3 : selectedList.size();
+				int rows = listsize >= 3 ? 3 : listsize;
 				for(int i=0; i<rows; i++){
 					System.out.println( selectedList.getRecord(i).toString() );
 				}
 				start_id = next_start_id;
 				next_start_id = rows;
 			}else if(code.equals("N")){
-				if(selectedList.size()>next_start_id){
+				if(listsize > next_start_id){
 					System.out.println("次のページを表示");
-					int rows = selectedList.size()- 
-								next_start_id >= 3 ? 3 : selectedList.size()-next_start_id;
+					int rows = listsize- next_start_id >= 3 ? 
+																		3 : listsize - next_start_id;
 					for(int i=next_start_id; i<next_start_id+rows; i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
@@ -82,7 +86,7 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 					next_start_id += rows;
 				}else{
 					System.out.println("最後まで表示して頭に戻りました");
-					int rows = selectedList.size() >= 3 ? 3 : selectedList.size();
+					int rows = listsize >= 3 ? 3 : listsize;
 					for(int i=0; i<rows; i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
@@ -107,12 +111,12 @@ public class DisplayPersonsByNameStatus extends ConsoleStatus {
 				}else{
 					System.out.println("末尾の３件を表示");
 					next_start_id = 
-						selectedList.size() >= 3 ? selectedList.size()-3 : 0;
-					for(int i=next_start_id; i<selectedList.size(); i++){
+						listsize >= 3 ? listsize-3 : 0;
+					for(int i=next_start_id; i<listsize; i++){
 						System.out.println( selectedList.getRecord(i).toString() );
 					}
 					start_id = next_start_id;
-					next_start_id = selectedList.size();
+					next_start_id = listsize;
 				}
 			}
 		}
